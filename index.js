@@ -89,17 +89,17 @@ function decode(str){
 	i4=i*4, i5=i*5
 	bytes.writeUInt8(a[i4]>>2, i5)
 
-	if(a[i4+1]===null)return bytes
+	if(a[i4+1]===null)return bytes.slice(0, i5+1)
 	bytes.writeUInt8(a[i4]%4<<6|a[i4+1]>>4, i5+1)
 
-	if(a[i4+2]===null)return bytes
+	if(a[i4+2]===null)return bytes.slice(0, i5+2)
 	bytes.writeUInt8(a[i4+1]%16<<4|a[i4+2]>>6, i5+2)
 
-	if(a[i4+3]===null)return bytes
+	if(a[i4+3]===null)return bytes.slice(0, i5+3)
 	else if(a[i4+3]>=1024){
 		var t=a[i4+3]-1024
 		bytes.writeUInt8(a[i4+2]%64<<2|t, i5+3)
-		return bytes
+		return bytes.slice(0, i5+4)
 	}
 
 	bytes.writeUInt8(a[i4+2]%64<<2|a[i4+3]>>8, i5+3)
