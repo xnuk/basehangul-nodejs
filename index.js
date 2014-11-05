@@ -139,9 +139,6 @@ function findTable(num){
 	}
 }
 
-while(false){
-	/* How to use */
-	console.log(encode(new Buffer("123d", "utf8"))) // should be 꺽먹꼐빎
-	console.log(decode("법멎민깖롬뢰까돈들뒝멓러벨맑민궈룃흐흐흐").toString('utf8')) // should be 경찰청쇠철창살
-	break;
+module.exports={
+	'encode': encode, 'decode': decode
 }
